@@ -1,8 +1,10 @@
 import React from 'react'
 import './rotating-card.css'
 
-function Details() {
+function Details(props) {
+
     return (
+        props.selCand.avatar &&
         <div className="card-container">
             <div className="card">
                 <div className="front">
@@ -10,14 +12,14 @@ function Details() {
                         <img src="images/rotating_card_thumb2.png" />
                     </div>
                     <div className="user">
-                        <img className="img-circle" src="images/rotating_card_profile.png" />
+                        <img className="img-circle" src={`images/${props.selCand.avatar}`} />
                     </div>
                     <div className="content">
                         <div className="main">
-                            <h3 className="name">Inna Corman</h3>
-                            <p className="profession">Product Manager</p>
+                            <h3 className="name">{props.selCand.prenom} {props.selCand.nom}</h3>
+                            <p className="profession">{props.selCand.age} ans </p>
 
-                            <p className="text-center">"I'm the new Sinatra, and since I made it here I can make it anywhere, yeah, they love me everywhere"</p>
+                            <p className="text-center">{props.selCand.profession}</p>
                         </div>
                         <div className="footer">
                             <div className="rating">
@@ -60,9 +62,8 @@ function Details() {
                     </div>
                     <div className="footer">
                         <div className="social-links text-center">
-                            <a href="https://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
-                            <a href="https://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
-                            <a href="https://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                            <button className='btn btn-success'>Details</button>
+
                         </div>
                     </div>
                 </div>

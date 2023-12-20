@@ -5,7 +5,7 @@ function Liste(props) {
     return (
         <ol className='list-group'>
             {props.allCands.map((cand) => {
-                return <ItemCv key={cand._id} oneCand={cand}></ItemCv>
+                return <ItemCv onchangeSelected={props.onchangeSelected} key={cand._id} oneCand={cand}></ItemCv>
             })}
         </ol>
     )

@@ -4,7 +4,7 @@ import AllCv from './pages/AllCv';
 function App() {
   return (
     <div className='container'>
-      <AllCv></AllCv>
+      <Routes
     </div>
 
   );
