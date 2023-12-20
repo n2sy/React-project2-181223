@@ -1,11 +1,12 @@
 import React from 'react'
 import ItemCv from './ItemCv'
 
-function Liste() {
+function Liste(props) {
     return (
         <ol className='list-group'>
-            <ItemCv></ItemCv>
-            <ItemCv></ItemCv>
+            {props.allCands.map((cand) => {
+                return <ItemCv key={cand._id} oneCand={cand}></ItemCv>
+            })}
         </ol>
     )
 }

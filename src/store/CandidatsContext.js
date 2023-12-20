@@ -14,8 +14,9 @@ export function CandidatContextProvider(props) {
     const [tabCand, setTabCand] = useState([]);
 
     function getCandidats() {
-        axios.get(this.link)
+        axios.get(link)
             .then(res => {
+                console.log(res.data);
                 setTabCand(res.data)
             })
     }
