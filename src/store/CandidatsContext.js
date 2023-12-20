@@ -5,13 +5,16 @@ import { createContext, useState } from "react";
 const candidatContext = createContext(
     {
         tabCandidats: [],
-        getAllCandidats: () => { }
+        selectedCandidat: {},
+        getAllCandidats: () => { },
+        getOneCandidat: () => { }
     }
 )
 
 export function CandidatContextProvider(props) {
     let link = "https://api-candidats.vercel.app/cv/persons"
     const [tabCand, setTabCand] = useState([]);
+    const [selCand, setSelCand] = useState({});
 
     function getCandidats() {
         axios.get(link)
@@ -20,9 +23,18 @@ export function CandidatContextProvider(props) {
                 setTabCand(res.data)
             })
     }
+    function getCandidatById(id) {
+        axios.get(`${link}/${id}`)
+            .then(res => {
+                console.log(res.data);
+                setSelCand(res.data)
+            })
+    }
     const c = {
         tabCandidats: tabCand,
-        getAllCandidats: getCandidats
+        getAllCandidats: getCandidats,
+        selectedCandidat: selCand,
+        getOneCandidat: getCandidatById
     }
     return <candidatContext.Provider value={c}>
         {props.children}

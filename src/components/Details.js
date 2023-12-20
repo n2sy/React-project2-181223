@@ -1,7 +1,12 @@
 import React from 'react'
 import './rotating-card.css'
+import { useNavigate } from 'react-router-dom'
 
 function Details(props) {
+    const navigate = useNavigate();
+    function goToInfos() {
+        navigate(`/cv/${props.selCand._id}`)
+    }
 
     return (
         props.selCand.avatar &&
@@ -62,7 +67,7 @@ function Details(props) {
                     </div>
                     <div className="footer">
                         <div className="social-links text-center">
-                            <button className='btn btn-success'>Details</button>
+                            <button onClick={goToInfos} className='btn btn-success'>Details</button>
 
                         </div>
                     </div>
