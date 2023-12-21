@@ -6,6 +6,7 @@ const loginContext = createContext({
   seConnecter: () => {},
   seDeconnecter: () => {},
   estConnecte: false,
+  verifyConnecte: () => {},
 });
 
 export function LoginContextProvider(props) {
@@ -30,11 +31,22 @@ export function LoginContextProvider(props) {
     localStorage.removeItem("access_token");
     setIsLogged(false);
   }
+  function verifyConnecte() {
+    let token = localStorage.getItem("access_token");
+    if (token) {
+      setIsLogged(true);
+      return true;
+    } else {
+      setIsLogged(false);
+      return false;
+    }
+  }
 
   const c = {
     seConnecter,
     seDeconnecter,
     estConnecte: isLogged,
+    verifyConnecte,
   };
 
   return (

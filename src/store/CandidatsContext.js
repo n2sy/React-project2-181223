@@ -30,9 +30,17 @@ export function CandidatContextProvider(props) {
       setSelCand(res.data);
     });
   }
+  function getToken() {
+    let token = localStorage.getItem("access_token");
+    return {
+      headers: {
+        Authorization: `bearer ${token}`,
+      },
+    };
+  }
   function ajouterCandidat(nCand, url) {
     axios
-      .post(`${link}/free`, nCand)
+      .post(`${link}`, nCand, getToken())
       .then((res) => {
         //getCandidats();
         alert(res.data.message);
@@ -44,7 +52,7 @@ export function CandidatContextProvider(props) {
   }
   function editerCandidat(uCand, url) {
     axios
-      .put(`${link}/free/${uCand._id}`, uCand)
+      .put(`${link}/${uCand._id}`, uCand, getToken())
       .then((res) => {
         //getCandidats();
         alert(res.data.message);
@@ -56,7 +64,7 @@ export function CandidatContextProvider(props) {
   }
   function deleteCandidat(id, url) {
     axios
-      .delete(`${link}/${id}`)
+      .delete(`${link}/${id}`, getToken())
       .then((res) => {
         //getCandidats();
         alert(res.data.message);
