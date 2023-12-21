@@ -8,6 +8,7 @@ const candidatContext = createContext({
   getAllCandidats: () => {},
   getOneCandidat: () => {},
   updateCandidat: () => {},
+  addCandidat: () => {},
 });
 
 export function CandidatContextProvider(props) {
@@ -28,6 +29,18 @@ export function CandidatContextProvider(props) {
       setSelCand(res.data);
     });
   }
+  function ajouterCandidat(nCand, url) {
+    axios
+      .post(`${link}/free`, nCand)
+      .then((res) => {
+        //getCandidats();
+        alert(res.data.message);
+        navigate(url);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   function editerCandidat(uCand, url) {
     axios
       .put(`${link}/free/${uCand._id}`, uCand)
@@ -46,6 +59,7 @@ export function CandidatContextProvider(props) {
     selectedCandidat: selCand,
     getOneCandidat: getCandidatById,
     updateCandidat: editerCandidat,
+    addCandidat: ajouterCandidat,
   };
   return (
     <candidatContext.Provider value={c}>

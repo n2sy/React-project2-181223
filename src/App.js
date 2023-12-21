@@ -14,7 +14,7 @@ function App() {
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/cv" element={<AllCv></AllCv>}></Route>
+        <Route path="/cv" exact element={<AllCv></AllCv>}></Route>
         <Route path="/cv/:id" element={<Infos></Infos>}></Route>
         <Route path="/cv/:id/edit" element={<UpdateCv></UpdateCv>}></Route>
         <Route path="/cv/add" element={<AddCv></AddCv>}></Route>

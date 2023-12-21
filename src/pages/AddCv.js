@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import FormCv from "../components/FormCv";
 
 function AddCv() {
-    return (
-        <div>AddCv</div>
-    )
+  return (
+    <div>
+      <FormCv></FormCv>
+    </div>
+  );
 }
 
-export default AddCv
+export default AddCv;
