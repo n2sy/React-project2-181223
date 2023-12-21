@@ -7,19 +7,21 @@ function Infos() {
     const candCtx = useContext(candidatContext);
 
     useEffect(() => {
-        candCtx.getOneCandidat(id)
-
+        candCtx.getOneCandidat(id);
     }, []);
 
     return (
+
         <div className="d-flex justify-content-center">
             <div className="col-lg-8 push-lg-4">
                 <div className="tab-content p-b-3">
                     <div className="tab-pane active" id="profile">
 
                         <div className="d-flex justify-content-center">
-                            <img width="150px" height="150px" className="rounded-circle align-content-center" src={`ìmages/${candCtx.selectedCandidat.avatar}`} alt=""></img>
+                            <img width="150px" height="150px" className="rounded-circle align-content-center" src={`/images/${candCtx.selectedCandidat?.avatar}`} alt=""></img>
+
                         </div>
+
                         <div className="row">
                             <div className="col-md-12">
                                 <h4 className="m-t-2"><span className="fa fa-clock-o ion-clock pull-xs-right"></span> Informations</h4>
