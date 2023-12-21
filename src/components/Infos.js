@@ -1,14 +1,23 @@
 import React, { useContext, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import candidatContext from "../store/CandidatsContext";
 
 function Infos() {
   let { id } = useParams();
   const candCtx = useContext(candidatContext);
+  let navigate = useNavigate();
 
   useEffect(() => {
     candCtx.getOneCandidat(id);
   }, []);
+
+  function deleteHandler(e) {
+    if (window.confirm("Etes vous sur de vouloir supprimer ce candidat ?")) {
+      candCtx.deleteCandidat(id, "/cv");
+    } else {
+      navigate("/", { replace: true });
+    }
+  }
 
   return (
     <div className="d-flex justify-content-center">
@@ -64,7 +73,9 @@ function Infos() {
                   </tbody>
                 </table>
                 <div className="d-flex justify-content-center">
-                  <button className="btn btn-danger">Delete</button>
+                  <button onClick={deleteHandler} className="btn btn-danger">
+                    Delete
+                  </button>
                   <Link to="edit" className="btn btn-primary">
                     Update
                   </Link>

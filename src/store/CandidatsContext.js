@@ -9,6 +9,7 @@ const candidatContext = createContext({
   getOneCandidat: () => {},
   updateCandidat: () => {},
   addCandidat: () => {},
+  deleteCandidat: () => {},
 });
 
 export function CandidatContextProvider(props) {
@@ -53,6 +54,18 @@ export function CandidatContextProvider(props) {
         console.log(err);
       });
   }
+  function deleteCandidat(id, url) {
+    axios
+      .delete(`${link}/free/${id}`)
+      .then((res) => {
+        //getCandidats();
+        alert(res.data.message);
+        navigate(url);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   const c = {
     tabCandidats: tabCand,
     getAllCandidats: getCandidats,
@@ -60,6 +73,7 @@ export function CandidatContextProvider(props) {
     getOneCandidat: getCandidatById,
     updateCandidat: editerCandidat,
     addCandidat: ajouterCandidat,
+    deleteCandidat,
   };
   return (
     <candidatContext.Provider value={c}>
