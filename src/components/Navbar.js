@@ -40,7 +40,7 @@ function Navbar() {
           className={({ isActive }) =>
             isActive ? "nav-link active" : "nav-link"
           }
-          to="#"
+          to="/login"
         >
           Login
         </NavLink>

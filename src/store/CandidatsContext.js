@@ -56,7 +56,7 @@ export function CandidatContextProvider(props) {
   }
   function deleteCandidat(id, url) {
     axios
-      .delete(`${link}/free/${id}`)
+      .delete(`${link}/${id}`)
       .then((res) => {
         //getCandidats();
         alert(res.data.message);
