@@ -39,6 +39,9 @@ function Navbar() {
           </NavLink>
         </li>
         <li className="nav-item">
+          <NavLink to="/watch">Watch</NavLink>
+        </li>
+        <li className="nav-item">
           <a
             onClick={() => {
               logCtx.seDeconnecter();
@@ -72,6 +75,9 @@ function Navbar() {
           >
             CV
           </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to="/watch">Watch</NavLink>
         </li>
         <li className="nav-item">
           <NavLink
